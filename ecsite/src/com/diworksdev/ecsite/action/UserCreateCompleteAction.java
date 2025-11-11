@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
+import com.diworksdev.ecsite.dao.UserCreateCompleteDAO; // ← DAOをインポート
 import com.opensymphony.xwork2.ActionSupport;
 
 public class UserCreateCompleteAction extends ActionSupport implements SessionAware {
@@ -15,12 +16,16 @@ public class UserCreateCompleteAction extends ActionSupport implements SessionAw
     private Map<String, Object> session;
     private UserCreateCompleteDAO userCreateCompleteDAO = new UserCreateCompleteDAO();
 
+    @Override
     public String execute() throws SQLException {
+
+        // セッションから値を取り出してユーザー登録
         userCreateCompleteDAO.createUser(
             session.get("loginUserId").toString(),
             session.get("loginPassword").toString(),
             session.get("userName").toString()
         );
+
         String result = SUCCESS;
         return result;
     }
