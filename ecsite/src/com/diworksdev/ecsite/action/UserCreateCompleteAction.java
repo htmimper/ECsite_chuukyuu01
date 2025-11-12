@@ -19,8 +19,7 @@ public class UserCreateCompleteAction extends ActionSupport implements SessionAw
     @Override
     public String execute() throws SQLException {
 
-        // セッションから値を取り出してユーザー登録
-        userCreateCompleteDAO.createUser(
+        userCreateCompleteDAO.cerateUser(
             session.get("loginUserId").toString(),
             session.get("loginPassword").toString(),
             session.get("userName").toString()
