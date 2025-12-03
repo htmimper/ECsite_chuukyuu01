@@ -7,7 +7,10 @@
     <constant name="struts.devMode" value="true" />
 
     <package name="default" namespace="/" extends="struts-default">
-
+    <!-- Root access (http://localhost:8080/ecsite/) -->
+    <action name="" class="com.diworksdev.ecsite.action.GoHomeAction" method="execute">
+    <result name="success">/home.jsp</result>
+    </action>
         <!-- GoHomeAction -->
         <action name="GoHomeAction" class="com.diworksdev.ecsite.action.GoHomeAction" method="execute">
             <result name="success">/home.jsp</result>
